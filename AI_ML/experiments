@@ -1,0 +1,180 @@
+1.1)    Hill climbing search algorithm
+1.2)    BFS algorithm
+1.3)    DFS algorithm
+
+
+2.1)    A* search algorithm
+2.2)    AO* search algorithm
+2.3)    Min-Max search algorithm
+
+
+3)      Write a Python code to solve the Water-Jug Problem by considering two jugs with 
+        the capacity of 5 and 3 liters.
+
+
+4)      Implement the sudoku problem (minimum 9×9 size) using constraint satisfaction 
+        using Python programming language.
+
+
+5)      Write a Python code to implement knowledge representation using frames with 
+        appropriate examples.
+
+
+6)      Implement the following supervised learning algorithms on small data sets.
+        a) Linear regression
+        b) Logistic regression
+
+
+7)      Implement the following clustering algorithms after performing the 
+        pre-processing on synthetic datasets.
+
+        a) k-means clustering 
+        b) k-mode clustering
+
+
+8)      Apply k-NN classifier for performing training and testing processes on heart disease 
+        dataset and evaluatethe classifier by considering the evaluation metrics such as 
+        Accuracy, Precision, Recall, F1-Score, Specificity, Sensitivity and Serendipity.
+
+        Task 1: The workflow of the k-NN for your dataset is also to be uploaded
+
+        Task 2: The following results need to be given:
+
+                (i)  Time analysis for training dataset by considering the different number of 
+                     k values (4 values) and different sizes (20%, 40%, 60%, 80% and 100%)
+
+                (ii) Time analysis for testing dataset (30%) by considering the different 
+                     number of k values (4 values).
+
+9)      Apply Naïve Bayes Classifier forperforming training and testingprocesses on share 
+        market datasetand evaluate the classifier byconsidering the evaluation metricssuch
+        as Accuracy, Precision, Recall,F1-Score, Specificity, Sensitivity andSerendipity.
+        
+        Task 1: The workflow of the NaïveBayes classifier for your dataset isalso to be uploaded
+        
+        Task 2: The following results need tobe given:
+        
+                iv) Time analysis for trainingdataset by considering thedifferent number 
+                    sizes of (20%,40%, 60%, 80% and 100%) datasets.
+                
+                v) Time analysis for testing dataset(30%) by considering the different 
+                   number of record sets.
+                   
+                vi) Find the misclassification ratefor the training and testingdataset 
+                    by considering thedifferent sizes of the datasets.
+
+
+10)     Apply ID3 Classifier for performing training and testing processes on NSL-KDD 
+        dataset and evaluate the classifier by considering the evaluation metrics such as 
+        Accuracy, Precision, Recall, F1-Score, Specificity, Sensitivity and Serendipity.
+
+        Task 1: The workflow of the ID3 classifier for your dataset is also to be uploaded
+
+        Task 2: The following results need to be given:
+
+                a). Time analysis for training dataset by considering the different number 
+                    sizes of (20%, 40%, 60%, 80% and 100%) datasets.
+                b). Time analysis for testing dataset (30%) by considering the different
+                    number of record sets.
+                c). Find the misclassification rate for the training and testing dataset
+                    by considering the different sizes of the datasets.
+
+
+11)     Apply CART for performing training and testing processes on Arrhythmia disease 
+        dataset and evaluate the classifier by considering the evaluation metrics such 
+        as Accuracy, Precision, Recall, F1-Score, Specificity, Sensitivity and Serendipity.
+
+        Task 1: The workflow of the CART classifier for your dataset is also to be uploaded
+
+        Task 2: The following results need to be given:
+
+                a). Time analysis for training dataset by considering the different number 
+                    sizes of (20%, 40%, 60%, 80% and 100%) datasets.
+                b). Time analysis for testing dataset (30%) by considering the different
+                    number of record sets.
+                c). Find the misclassification rate for the training and testing dataset
+                    by considering the different sizes of the datasets.
+
+
+12)     Apply MLP for performing training and testing processes diabetic disease dataset 
+        and evaluate the classifier by considering the evaluation metrics such as 
+        Accuracy, Sensitivity, Specificity, Positive predictive value (PPV), 
+        Training and Testing time, R square score, Root Mean Squared Error (RMSE), 
+        Mean Absolute Error (MAE)and Median Absolute Error (MdAE).
+
+
+        Task 1: The workflow of the MLP classifier for your dataset is also to be uploaded
+
+        Task 2: The following results need to be given:
+
+                a). Time analysis for training dataset by considering the different number 
+                    sizes of (20%, 40%, 60%, 80% and 100%) datasets.
+                b). Time analysis for testing dataset (30%) by considering the different
+                    number of record sets.
+                c). Find the misclassification rate for the training and testing dataset
+                    by considering the different sizes of the datasets.
+                d). Provide the confusion matrix.
+
+
+13)     Apply k-Means clustering algorithm to form clusters for cancer disease dataset. 
+        Evaluate the algorithm by using the evaluation metrics such as sum squared errors,
+        k-values (k- number of clusters), time taken for forming each cluster and overall
+        time taken. Moreover, provide the manual workflow for the sample records of your
+        own dataset.
+
+        Task 1: The workflow of the k-Mode clustering for your dataset is also to be uploaded
+
+        Task 2: The following results need to be given:
+
+                a). Time analysis for input dataset to form clusters by considering the 
+                    different number sizes of (50%, 60%, 70%, 80%, 90% and 100%) datasets.
+                
+                b). Time analysis to form clusters for the entire dataset.
+
+                c). Calculate the clustering accuracy.
+
+                d). Comparative analysis between K-Means clustering and k-Mode clustering 
+                    algorithms with respect to time taken and clustering accuracy.
+
+
+14)     Apply k-Mode clustering algorithm to form clusters for weather dataset. Evaluate 
+        the algorithm by using the necessary evaluation metrics including precision,
+        recall, f-measure, accuracy, time taken for forming each cluster and overall 
+        timetaken.
+
+        Task 1: The workflow of the k-Mode clustering for weather dataset is also to be uploaded
+
+        Task 2: The following results need to be given:
+
+                a). Time analysis for input dataset to form clusters by considering the 
+                    different number sizes of (50%, 60%, 70%, 80%, 90% and 100%) datasets.
+                
+                b). Time analysis to form clusters for the entire dataset.
+
+                c). Calculate the clustering accuracy.
+
+                d). Comparative analysis between K-Means clustering and k-Mode clustering 
+                    algorithms with respect to time taken and clustering accuracy.
+
+15)     Develop an attack prediction system by incorporating an ensemble classifier using 
+        k-NN and ID3. Enhance the performance using a boosting algorithm and prove the
+        same. Consider the necessarymetrics including Accuracy, Precision, Recall, F1-Score,
+        Specificity,Sensitivity and Serendipity.
+
+
+16)     Develop a Disease prediction system by incorporating Q-Learning. Consider the 
+        necessary metrics including Accuracy, Precision, Recall, F1-Score, Specificity, 
+        Sensitivity and Serendipity.
+
+
+
+
+
+
+
+
+
+
+
+
+
