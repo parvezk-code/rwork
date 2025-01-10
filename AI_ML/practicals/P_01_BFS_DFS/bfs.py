@@ -1,5 +1,5 @@
 from collections import defaultdict
-from graphUtils import Graph
+from utils import Graph
 
 def BFS(graph, src, e):
 	visited = defaultdict(list)
@@ -22,11 +22,11 @@ def BFS(graph, src, e):
 	return([])
    
 adjList_1 = { 
-	'1': ['2', '5', '4'],
+	'1': ['2', '5'],
 	'2': ['1', '5', '3'],
-	'3': ['2', '5'],
-    '4': ['1'],
-    '5': ['1', '2', '3']
+	'3': ['2', '4', '5'],
+    '4': ['3', '5'],
+    '5': ['1', '2', '3', '4']
 }
 
 g1 = Graph(adjList_1)

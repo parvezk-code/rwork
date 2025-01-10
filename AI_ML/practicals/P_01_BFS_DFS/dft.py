@@ -1,32 +1,37 @@
 from collections import defaultdict
 from utils import Graph
+from utils import Stack
 
-def BFT(graph, src):
+def DFT(graph, src):
 	visited = defaultdict(list)
-	queue = []
-	path  = [];        
+	stack = Stack()
+	path  = [];       
+
 	for node in graph.adjList:
 		visited[node] = False
 
-	queue.append(src)
+	stack.push(src)
 	visited[src] = True
-	while queue:
-		s = queue.pop(0)
+	while not stack.isEmpty():
+		s = stack.pop()
 		path.append(s)
 		unVisitedNodes = list(filter(lambda i:not visited[i], graph.adjList[s] ))
 		for i in unVisitedNodes:
-			queue.append(i)
+			stack.push(i)
 			visited[i] = True
 	return(path)
    
 adjList_1 = { 
-	'1': ['2', '5'],
+	'1': ['2', '5', '6', '8'],
 	'2': ['1', '5', '3'],
 	'3': ['2', '4', '5'],
     '4': ['3', '5'],
-    '5': ['1', '2', '3', '4']
+    '5': ['1', '2', '3', '4'],
+    '6': ['1', '7'],
+    '7': ['6'],
+    '8': ['1']
 }
 
 g1 = Graph(adjList_1)
-path = BFT(g1, '1')
+path = DFT(g1, '1')
 print(path)
