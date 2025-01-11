@@ -22,17 +22,16 @@ class Graph:
 class Stack:
     def __init__(self):
         self.stack = []
+        self.top = -1
     
     def push(self, element):
         self.stack.append(element)
+        self.top = self.top + 1
     
     def pop(self):
         if self.isEmpty():
-            return "Stack is empty"
+            return "Nan"
         return self.stack.pop()
     
     def isEmpty(self):
-        return len(self.stack) == 0
-    
-    def size(self):
-        return len(self.stack)
+        return self.top == -1

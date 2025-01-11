@@ -1,5 +1,4 @@
 from collections import defaultdict
-from utils import Graph
 from utils import Stack
 
 def DFS(graph, src, e):
@@ -7,7 +6,7 @@ def DFS(graph, src, e):
 	stack = Stack()
 	path  = [];       
 
-	for node in graph.adjList:
+	for node in graph:
 		visited[node] = False
 
 	stack.push(src)
@@ -17,7 +16,7 @@ def DFS(graph, src, e):
 		path.append(s)
 		if s==e:
 			return(path)
-		unVisitedNodes = list(filter(lambda i:not visited[i], graph.adjList[s] ))
+		unVisitedNodes = list(filter(lambda i:not visited[i], graph[s] ))
 		for i in unVisitedNodes:
 			stack.push(i)
 			visited[i] = True
@@ -34,6 +33,5 @@ adjList_1 = {
     '8': ['1']
 }
 
-g1 = Graph(adjList_1)
-path = DFS(g1, '1', '5')
+path = DFS(adjList_1, '1', '5')
 print(path)

@@ -1,11 +1,10 @@
 from collections import defaultdict
-from utils import Graph
 
 def BFT(graph, src):
 	visited = defaultdict(list)
 	queue = []
 	path  = [];        
-	for node in graph.adjList:
+	for node in graph:
 		visited[node] = False
 
 	queue.append(src)
@@ -13,7 +12,7 @@ def BFT(graph, src):
 	while queue:
 		s = queue.pop(0)
 		path.append(s)
-		unVisitedNodes = list(filter(lambda i:not visited[i], graph.adjList[s] ))
+		unVisitedNodes = list(filter(lambda i:not visited[i], graph[s] ))
 		for i in unVisitedNodes:
 			queue.append(i)
 			visited[i] = True
@@ -27,6 +26,5 @@ adjList_1 = {
     '5': ['1', '2', '3', '4']
 }
 
-g1 = Graph(adjList_1)
-path = BFT(g1, '1')
+path = BFT(adjList_1, '1')
 print(path)
