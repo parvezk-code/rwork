@@ -1,5 +1,4 @@
 from collections import defaultdict
-from utils import Graph
 from utils import Stack
 
 def DFT(graph, src):
@@ -7,7 +6,7 @@ def DFT(graph, src):
 	stack = Stack()
 	path  = [];       
 
-	for node in graph.adjList:
+	for node in graph:
 		visited[node] = False
 
 	stack.push(src)
@@ -15,7 +14,7 @@ def DFT(graph, src):
 	while not stack.isEmpty():
 		s = stack.pop()
 		path.append(s)
-		unVisitedNodes = list(filter(lambda i:not visited[i], graph.adjList[s] ))
+		unVisitedNodes = list(filter(lambda i:not visited[i], graph[s] ))
 		for i in unVisitedNodes:
 			stack.push(i)
 			visited[i] = True
@@ -32,6 +31,5 @@ adjList_1 = {
     '8': ['1']
 }
 
-g1 = Graph(adjList_1)
-path = DFT(g1, '1')
+path = DFT(adjList_1, '1')
 print(path)

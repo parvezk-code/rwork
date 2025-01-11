@@ -10,8 +10,11 @@ class BFS:
 
     def start(self):
         queue, visited = ([] , defaultdict(list))
-        for node in self.graph:
-            visited[node] = False
+        
+        visited = dict([(key[0],False) for key in dic_01]) 
+        
+        #for node in self.graph:
+            #visited[node] = False
         
         visited[self.root] = True
         queue.append(self.root)
