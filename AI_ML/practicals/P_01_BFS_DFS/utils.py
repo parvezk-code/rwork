@@ -31,6 +31,7 @@ class Stack:
     def pop(self):
         if self.isEmpty():
             return "Nan"
+        self.top = self.top - 1
         return self.stack.pop()
     
     def isEmpty(self):
