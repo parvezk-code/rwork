@@ -17,12 +17,12 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 
 class NaiveBayesClassifier:
-    def __init__(self, dataset, test_size=0.2):
+    def __init__(self, dataset, train_size=0.2):
         """
         Initialize with dataset and test size for splitting data.
         """
         self.dataset = dataset
-        self.test_size = test_size
+        self.train_size = train_size
 
         # Initialize the classifier
         self.model = GaussianNB()
@@ -46,7 +46,7 @@ class NaiveBayesClassifier:
         X = self.dataset.iloc[:, :-1]  # Features
         y = self.dataset.iloc[:, -1]   # Labels
 
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=self.test_size, random_state=42)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, train_size=self.train_size, random_state=42)
 
     def fit(self):
         """
@@ -164,14 +164,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, mean_squared_error, mean_absolute_error, median_absolute_error
 
 class ModelAnalyzer:
-    def __init__(self, dataset, splits):
+    def __init__(self, dataset, train_size):
         """
         Initialize ModelAnalyzer with dataset and list of splits for training/testing.
         """
         self.dataset = dataset
-        self.splits = splits  # List of different test/train splits (e.g., [0.2, 0.3, 0.4])
+        self.train_size = train_size  # List of different test/train splits (e.g., [0.2, 0.3, 0.4])
         self.results = []
-        #self.results.append([''] + self.splits)
+        #self.results.append([''] + self.train_size)
         self.results.append(['Testing Time'] )
         self.results.append(['Training Time'] )
         self.results.append(['Accuracy'] )
@@ -187,8 +187,8 @@ class ModelAnalyzer:
         """
         Iterates over different splits, runs the NaiveBayesClassifier, and stores the results.
         """
-        for split in self.splits:
-            model = NaiveBayesClassifier(self.dataset, test_size=float(split))
+        for size in self.train_size:
+            model = NaiveBayesClassifier(self.dataset, train_size= (0.7 * float(size)))
             model.start()
 
             # Append the results to the respective lists
@@ -205,10 +205,10 @@ class ModelAnalyzer:
 
     def get_table(self):
         # Return the list results
-        self.splits = ["train % -->"] + self.splits
+        splits = ["train % -->"] + self.train_size
 
         # Create a pandas DataFrame
-        df = pd.DataFrame(self.results, columns=self.splits)
+        df = pd.DataFrame(self.results, columns=splits)
 
         # Use pandas styling for a nice table display
         styled_df = df.style.set_table_styles(
@@ -228,8 +228,10 @@ class ModelAnalyzer:
 
 dataset = getData()
 
+train_size=["0.2", "0.3", "0.4", "0.5", "0.6", "0.7"]
+
 # Initialize ModelAnalyzer with the dataset and list of splits
-model_analyzer = ModelAnalyzer(dataset, splits=["0.2", "0.3", "0.4", "0.5", "0.6", "0.7"])
+model_analyzer = ModelAnalyzer(dataset, train_size)
 
 # Start the analysis
 model_analyzer.start()

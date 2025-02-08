@@ -23,7 +23,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.datasets import fetch_openml
 
 class KnnClassifier:
-    def __init__(self, data, k, test_size):
+    def __init__(self, data, k, train_size):
         # Initialize with data and split into X (independent) and Y (dependent)
         self.df           =   data
         self.X            =   self.df.drop(columns='target')
@@ -33,7 +33,7 @@ class KnnClassifier:
         self.X_test       =   None
         self.Y_test       =   None
         self.Y_pred       =   None
-        self.test_size    =   test_size
+        self.train_size    =   train_size
         self.k            =   k
         self.knn_model    =   KNeighborsClassifier(self.k)
         self.accuracy     =   None
@@ -47,7 +47,7 @@ class KnnClassifier:
     def splitData(self):
 
         # Split into training and testing sets
-        self.X_train, self.X_test, self.Y_train, self.Y_test = train_test_split(self.X, self.Y, test_size=self.test_size, random_state=42)
+        self.X_train, self.X_test, self.Y_train, self.Y_test = train_test_split(self.X, self.Y, train_size=self.train_size, random_state=42)
 
         # Normalize/Standardize features (important for KNN)
         scaler = StandardScaler()
@@ -104,9 +104,9 @@ class KnnClassifier:
 import time
 
 class ModelAnalyzer:
-    def __init__(self, splits, k):
+    def __init__(self, train_size, k):
         # Initialize the input list splits
-        self.splits = splits
+        self.train_size = train_size
         self.k = k
         self.results = []
         #self.results.append([''] + self.splits)
@@ -122,10 +122,10 @@ class ModelAnalyzer:
 
     def get_table(self):
         # Return the list results
-        self.splits = ["train % -->"] + self.splits
+        train_size = ["train % -->"] + self.train_size
 
         # Create a pandas DataFrame
-        df = pd.DataFrame(self.results, columns=self.splits)
+        df = pd.DataFrame(self.results, columns=train_size)
 
         # Use pandas styling for a nice table display
         styled_df = df.style.set_table_styles(
@@ -155,8 +155,8 @@ class ModelAnalyzer:
       heart_disease = fetch_openml(name='heart-disease', version=1, as_frame=True)
       data = heart_disease.frame
 
-      for split in self.splits:
-        obj = KnnClassifier(data, self.k, float(split))
+      for size in self.train_size:
+        obj = KnnClassifier(data, self.k, (0.7 * float(size)) )
         obj.splitData()            # create train and test
         start_time = time.time()
         obj.fit()                  # using X_train, Y_train
@@ -171,7 +171,7 @@ class ModelAnalyzer:
         self.storeResult(obj)
 
 # Example usage:
-splits = ["0.2", "0.3", "0.4", "0.5", "0.6", "0.7"]
-creator = ModelAnalyzer(splits, 5)
+train_size = ["0.2", "0.3", "0.4", "0.5", "0.6", "0.7"]
+creator = ModelAnalyzer(train_size, 5)
 creator.start()
 creator.get_table()

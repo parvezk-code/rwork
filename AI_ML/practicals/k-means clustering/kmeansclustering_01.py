@@ -21,6 +21,7 @@ getData
 
 import time
 import numpy as np
+import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
@@ -85,7 +86,28 @@ def getDiseaseData():
   X = scaler.fit_transform(X)
   return(X, y_true)
 
-a, b = getDiseaseData()
+def get_table(table, dataset_sizes):
+    # Return the list results
+    dataset_sizes = ["train % -->"] + dataset_sizes
+
+    # Create a pandas DataFrame
+    df = pd.DataFrame(table, columns=dataset_sizes)
+
+    # Use pandas styling for a nice table display
+    styled_df = df.style.set_table_styles(
+        [{'selector': 'thead th',
+          'props': [('background-color', '#4CAF50'),
+                    ('color', 'white'),
+                    ('font-weight', 'bold')]},
+        {'selector': 'tbody tr:nth-child(odd)',
+          'props': [('background-color', '#f2f2f2')]},
+        {'selector': 'tbody tr:nth-child(even)',
+          'props': [('background-color', '#ffffff')]},
+          {'selector': 'td', 'props': [('text-align', 'left')]}]
+    )
+
+    # Display the table
+    return(styled_df.hide(axis="index"))
 
 n_clusters = 3
 random_state = 42
@@ -95,17 +117,26 @@ random_state = 42
 X, y_true = getDiseaseData()
 
 # Evaluate K-Means for different dataset sizes
-dataset_sizes = [0.5, 0.6, 0.7, 0.8, 0.9, 1]
+dataset_sizes = ["0.5", "0.6", "0.7", "0.8", "0.9", "1"]
 results = {}
+
+table = []
+table.append(['Sum of Squared Errors'] )
+table.append(['Clustering Accuracy'] )
+table.append(['Time Taken'] )
 
 for size in dataset_sizes:
     # Split the dataset
-    X_subset, _, y_subset, _ = train_test_split(X, y_true, train_size=(0.7 * size), random_state=random_state)
+    X_subset, _, y_subset, _ = train_test_split(X, y_true, train_size=(0.7 * float(size)), random_state=random_state)
 
     # Evaluate K-Means
     sse, time_taken, y_pred = evaluate_kmeans(X_subset, y_subset, n_clusters)
 
     accuracy = evaluate_model(y_subset, y_pred)
+
+    table[0].append(sse)
+    table[1].append(accuracy)
+    table[2].append(time_taken)
 
     results[size] = {
         'SSE': sse,
@@ -114,9 +145,10 @@ for size in dataset_sizes:
         'Predictions': y_pred
     }
 
-# Print the results
 for size, metrics in results.items():
-    print(f"Dataset Size: {int(size * 100)}%")
+    print(f"Dataset Size: {int(float(size) * 100)}%")
     print(f"  Sum of Squared Errors (SSE): {metrics['SSE']}")
     print(f"  Time Taken: {metrics['Time Taken']:.4f} seconds")
     print(f"  Clustering Accuracy: {metrics['Accuracy']:.4f}")
+
+get_table(table, dataset_sizes)
