@@ -39,8 +39,8 @@ class LinearRegressionModel:
 
     def print_coefficients(self):
         """Print the model coefficients (intercept and slope)."""
-        print("Intercept:", self.lr_model.intercept)
-        print("Coefficient:", self.lr_model.coef)
+        print("Intercept:", self.lr_model.intercept_)
+        print("Coefficient:", self.lr_model.coef_)
 
     def evaluate_model(self):
         """Evaluate the model performance."""

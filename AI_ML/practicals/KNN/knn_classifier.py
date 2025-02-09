@@ -171,7 +171,8 @@ class ModelAnalyzer:
         self.storeResult(obj)
 
 # Example usage:
+K = 5
 train_size = ["0.2", "0.3", "0.4", "0.5", "0.6", "0.7"]
-creator = ModelAnalyzer(train_size, 5)
+creator = ModelAnalyzer(train_size, K)
 creator.start()
 creator.get_table()
