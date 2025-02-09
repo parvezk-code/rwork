@@ -7,6 +7,34 @@ Original file is located at
     https://colab.research.google.com/drive/1nc8kRUCd8mGRsWOQiEwiJA19sx4tIc5_
 """
 
+import math
+
+def getTree(leafs):
+    # Find the height of the tree
+    k = len(leafs)
+    total_nodes = k
+    p = k
+    while(p>1):
+      p = math.ceil(p/2)
+      total_nodes = total_nodes + p
+
+    print(k, total_nodes)
+    adj_list = {}
+    for i in range(0, total_nodes):
+      #print(i, end = " ")
+      node = {'value':None, 'children':[]}
+      if(i >= total_nodes-k):
+        node['value'] = leafs[i - total_nodes]
+      elif((2*i + 2) < total_nodes):
+        node['children'] = [2*i + 1, 2*i + 2]
+      else:
+        node['children'] = [2*i + 1]
+      adj_list[i] = node
+    return(adj_list)
+
+
+print(getTree([4, 5, 6]))
+
 class Minimax:
     def __init__(self, graph):
         self.graph = graph
@@ -64,6 +92,12 @@ adj_list = {
     'N': {'value': 0, 'children': []},
     'O': {'value': -1, 'children': []}
 }
+obj = Minimax(adj_list)
+print(obj.start())
+
+leafs = [3, 5, 6, 9, 1, 2, 0, -1]
+leafs = [40, 50, 60, 70]
+adj_list = getTree(leafs)
 obj = Minimax(adj_list)
 print(obj.start())
 
